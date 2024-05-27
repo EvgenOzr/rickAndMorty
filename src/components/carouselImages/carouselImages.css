@@ -1,0 +1,35 @@
+.character-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    
+    /* margin-right: 1rem; */
+    /* margin-left: 23px; */
+}
+.all {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center;
+    margin: 0 auto; */
+}
+.all .allImage{
+    margin-right: 9px;
+
+}
+.all .imageName{
+    color: #000;
+    font-size: 17px;
+    font-weight: 500;
+}
+.currentPage{
+    margin: 5px 20px 0 20px;
+    color: #000;
+    font-size: 17px;
+    font-weight: 500;
+}
+.controlButtons{
+    display: flex;
+    justify-content: center;
+    /* margin: 0 auto; */
+    margin-bottom: 10px;
+}

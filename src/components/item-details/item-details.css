@@ -1,0 +1,26 @@
+.person-details {
+  display: flex;
+  /* margin-top: 1rem; */
+  flex-direction: row !important;
+  padding: 1rem;
+}
+
+.person-details .person-image {
+  width: 25%;
+  height: 15%;
+
+  border-radius: 15px;
+}
+
+.person-details .list-group-item {
+  padding: .25rem;
+}
+
+.person-details .list-group-item .term{
+  margin-right: .5rem;
+}
+
+.nothing{
+  font-size: 25px;
+  font-weight: 700;
+}
