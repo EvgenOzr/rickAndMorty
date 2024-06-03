@@ -11,9 +11,10 @@ const CharacterPage = () => {
     let navigate = useNavigate();
     let {id} = useParams()
 
-    const CheckPage = () => {
-        setPage((page) => page + 1)
-        // console.log(page);
+    const nextPage = (step) => {
+        if(((step === -1) && (page > 1)) || (step === 1)){
+            setPage((page) => page + step)
+        }
     }
 
     return (
@@ -25,8 +26,13 @@ const CharacterPage = () => {
             <div className="rowButton col-md-6">
                 <button 
                     type="button" 
-                    className="nextButton btn btn-info"
-                    onClick={CheckPage}
+                    className="nextButton btn btn-primary"
+                    onClick={() => nextPage(-1)}
+                    >Previous Characters</button>
+                <button 
+                    type="button" 
+                    className="nextButton btn btn-primary"
+                    onClick={() => nextPage(1)}
                     >Next Characters</button>
             </div>
         </>

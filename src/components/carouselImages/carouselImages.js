@@ -45,20 +45,17 @@ const CarouselImages = () => {
 
     useEffect(() => {
         rimService
-            .getAllPages()
+            .getAllPages('character')
             .then((pages) => setAllPages(pages))
     }, [])
 
     const {images, loading, error} = allImages;
     let content = loading ? <Spinner/> : <AllImages images ={images}/>
-    // console.log(loading, error, content);
     if(error) content = <ErrorIndicator/>
 
     const changePage = (newPage) => {
-        if (newPage > 0){
-            if(page < allPages) setPage((p) => p + newPage)
-        } else { 
-            if(page > 1) setPage((p) => p + newPage)
+        if (((newPage > 0) && (page < allPages)) || ((newPage < 0) && (page > 1)) ){
+            setPage((p) => p + newPage)
         }
     } 
 
@@ -75,10 +72,10 @@ const CarouselImages = () => {
 }
 
 const AllImages = ({images}) => {
-    // console.log(allImages);
+
     const allImages = images.map(({image, name}) => {
         if(name.length > 10) {
-            name = name.slice(0, 15)
+            name = name.slice(0, 18)
         }
         return (
             <div
@@ -92,7 +89,7 @@ const AllImages = ({images}) => {
             </div>
         )
     })
-    // console.log(allImages);
+
     return(
         <div className="all">
             {allImages}

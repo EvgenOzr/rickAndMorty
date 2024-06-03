@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {  EpisodesList, EpisodeDetails } from "../rim-components";
 import {useNavigate, useParams} from 'react-router-dom'
 import Row from "../row";
@@ -7,20 +7,37 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const EpisodesPage = () => {
 
-    let {id} = useParams();
-    const navigate = useNavigate();
+	const [page, setPage] = useState(1) 
+	let {id} = useParams();
+	const navigate = useNavigate();
 
-    return(
-        // <Row 
-        //     left={<EpisodesList onItemSelected={(id) => {navigate(`/episode/${id}`)}}/>} 
-        //     right={<EpisodeDetails itemId={id}/>}
-        // />
-            <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </DropdownButton>
-    )
+	const nextPage = (step) => {
+		if(((step === -1) && (page > 1)) || (step === 1)){
+			setPage((page) => page + step)
+		}
+	}
+
+	return(
+		<>
+			<Row 
+				left={<EpisodesList page={page} onItemSelected={(id) => {navigate(`/episode/${id}`)}}/>} 
+				right={<EpisodeDetails itemId={id}/>}
+			/>
+			<div className="rowButton col-md-6">
+				<button 
+					type="button" 
+					className="nextButton btn btn-primary"
+					onClick={() => nextPage(-1)}
+					>Previous Episodes</button>
+				<button 
+					type="button" 
+					className="nextButton btn btn-primary"
+					onClick={() => nextPage(1)}
+					>Next Episodes</button>
+			</div>
+		</>
+
+	)
 }
 
 export default EpisodesPage;

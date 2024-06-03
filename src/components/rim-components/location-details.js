@@ -1,12 +1,15 @@
 import React from 'react';
-import ItemDetails, {Record} from '../item-details'
+import ItemDetails, {Record, RecordPerson} from '../item-details'
 import { withRiMService } from '../hoc-helper';
 
 const LocationDetails = (props) => {
+    // const {residents} = props;
+    // console.log(props);
     return(
         <ItemDetails {...props}>
             <Record field='type' label='Тип:'/>
             <Record field='dimension' label='Измерение:'/>
+            <RecordPerson field='residents' label='Обитатели:'/>
         </ItemDetails>
     )
 }

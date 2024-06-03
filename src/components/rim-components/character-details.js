@@ -1,12 +1,12 @@
 import React from 'react';
-import ItemDetails, {Record} from '../item-details'
+import ItemDetails, {Record, RecordCharacter} from '../item-details'
 import { withRiMService } from '../hoc-helper';
 
 
 const CharacterDetails = (props) => {
     return (
         <ItemDetails {...props}>
-            <Record field='status' label='Статус:'/>
+            <RecordCharacter field='status' label='Статус:'/>
             <Record field='species' label='Вид:'/>
             <Record field='gender' label='Пол:'/>
         </ItemDetails>

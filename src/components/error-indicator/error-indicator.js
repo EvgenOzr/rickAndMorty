@@ -1,12 +1,14 @@
 import React from 'react';
 
 import './error-indicator.css';
-import icon from './death-star.png';
+import icon from './morty.jpeg';
 
 const ErrorIndicator = () => {
   return (
     <div className="error-indicator">
-      <img src={icon} alt="error icon"/>
+      <div className='error-indicator-img'>
+        <img src={icon} alt="error icon"/>
+      </div>
       <span className="boom">BOOM!</span>
       <span>
         something has gone terribly wrong

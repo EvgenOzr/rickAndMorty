@@ -21,42 +21,42 @@
   }
 
   getAllCharacters = async (page = 1) =>{
-    const res = await this.getResource(`/character/?page=${page}`);
+    const res = await this.getResource(`character?page=${page}`);
     return res.results.map(this._transformCharacter).slice(0, 20);
   }
 
   getCharacter = async (id) => {
-    const character = await this.getResource(`/character/${id}/`);
+    const character = await this.getResource(`character/${id}/`);
     return this._transformCharacter(character);
   }
 
-  getAllLocations = async () => {
-    const res = await this.getResource(`/location/`);
+  getAllLocations = async (page = 1) => {
+    const res = await this.getResource(`location?page=${page}`);
     return res.results.map(this._transformLocation).slice(0, 20);
   }
 
   getLocation = async (id) => {
-    const location = await this.getResource(`/location/${id}/`);
+    const location = await this.getResource(`location/${id}/`);
     return this._transformLocation(location)
   }
 
-  getAllEpisodes = async () => {
-    const res = await this.getResource(`/episode/`);
+  getAllEpisodes = async (page = 1) => {
+    const res = await this.getResource(`episode?page=${page}`);
     return res.results.map(this._transformEpisode).slice(0, 20);
   }
 
   getEpisode = async (id) => {
-    const episode = await this.getResource(`/episode/${id}/`);
+    const episode = await this.getResource(`episode/${id}/`);
     return this._transformEpisode(episode)
   }
 
   getAllCharactersImage = async (page) => {
-    const res = await this.getResource(`/character/?page=${page}`);
+    const res = await this.getResource(`character/?page=${page}`);
     return res.results.map(this._transformImages);
   } 
 
-  getAllPages = async () => {
-    const res = await this.getResource(`/character`);
+  getAllPages = async (section) => {
+    const res = await this.getResource(`/${section}`);
     return res.info.pages;
   }
   _extractID = (item) => {
@@ -80,6 +80,7 @@
       name: location.name,
       type: location.type,
       dimension: location.dimension,
+      residents: location.residents
     }
   }
 

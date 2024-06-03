@@ -30,12 +30,11 @@ const mapEpisodesMethodsToProps = (RiMService) => {
     }
 }
 const ListWithChildren = withChildFunction (ItemList, ({name}) => <span>{name}</span>)
-const renderModelAndName = ({model, name, id}) => <span>{name} ({model}) (id:{id})</span>
+const renderSeasonEpisode = ({episode, name}) => <span>Season: {episode.slice(1, 3)} - {name} </span>
 
 const CharacterList = withRiMService(withData(ListWithChildren), mapCharacterMethodsToProps)
 const LocationsList = withRiMService(withData(ListWithChildren), mapLocationsMethodsToProps)
-const EpisodesList = withRiMService(withData(ListWithChildren), mapEpisodesMethodsToProps)
-// const StarshipsList = withSwapiService(withData(withChildFunction(ItemList, renderModelAndName)), mapEpisodesMethodsToProps)
+const EpisodesList = withRiMService(withData(withChildFunction(ItemList, renderSeasonEpisode)), mapEpisodesMethodsToProps)
 
 export {
     CharacterList,
