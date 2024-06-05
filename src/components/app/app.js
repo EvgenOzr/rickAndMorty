@@ -5,7 +5,7 @@ import { RiMServiceProvider} from '../rim-service-contex/rim-service-context';
 import { CharacterPage, LocationsPage, EpisodesPage} from '../pages';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Header from '../header';
-import RandomPerson from '../random-person';
+import RandomCharacter from '../random-character';
 import CarouselImages from '../carouselImages';
 import './app.css';
 
@@ -41,7 +41,7 @@ export default class App extends Component {
               <Header/>
                 <Routes>
                     {/* <Route path='/' element={<h2>Welcome to Rick and Morty DB</h2>}/> */}
-                    <Route path='/' element={<RandomPerson/>}/>
+                    <Route path='/' element={<RandomCharacter/>}/>
                     <Route path='/character/:id?' element={<CharacterPage/>}/>
                     <Route path='/location/:id?' element={<LocationsPage/>}/>
                     <Route path='/episode/:id?' element={<EpisodesPage/>}/>

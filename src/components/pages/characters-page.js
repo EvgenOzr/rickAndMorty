@@ -1,21 +1,31 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {CharacterDetails , CharacterList } from "../rim-components";
 import Row from "../row";
 import {useNavigate, useParams} from 'react-router-dom';
+import NavigationBlock from "./navigation-block";
+import RiMService from "../../services/rickAndMorty-service";
 import './index.css'
 
 
 const CharacterPage = () => {
 
-    const [page, setPage] = useState(1) 
+    const [page, setPage] = useState(1);
+    const [allPages, setAllPages] = useState(0); 
     let navigate = useNavigate();
-    let {id} = useParams()
+    let {id} = useParams();
+    const rimService = new RiMService();
 
-    const nextPage = (step) => {
-        if(((step === -1) && (page > 1)) || (step === 1)){
-            setPage((page) => page + step)
+    const nextPage = (newPage) => {
+        if (((newPage > 0) && (page < allPages)) || ((newPage < 0) && (page > 1)) ){
+            setPage((p) => p + newPage)
         }
     }
+
+    useEffect(() => {
+        rimService
+            .getAllPages('character')
+            .then((pages) => setAllPages(pages))
+    }, [])
 
     return (
         <>
@@ -23,18 +33,13 @@ const CharacterPage = () => {
                 left={<CharacterList page={page} onItemSelected={(id) => {navigate(`/character/${id}`)}}/>} 
                 right={<CharacterDetails itemId={id}/>}
             />
-            <div className="rowButton col-md-6">
-                <button 
-                    type="button" 
-                    className="nextButton btn btn-primary"
-                    onClick={() => nextPage(-1)}
-                    >Previous Characters</button>
-                <button 
-                    type="button" 
-                    className="nextButton btn btn-primary"
-                    onClick={() => nextPage(1)}
-                    >Next Characters</button>
-            </div>
+            <NavigationBlock 
+                nextPage={nextPage} 
+                page={page} 
+                allPages={allPages}
+                prevBName={'Previous Characters'}
+                nextBName={'Next Characters'}
+            />
         </>
 
 
