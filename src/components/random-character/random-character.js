@@ -32,6 +32,7 @@ const RandomCharacter = ({updateInterval}) => {
 
 	let characters = (
 		<>
+		    <h2 className='greetings'>Welcome to Rick and Morty DB</h2>
 			<Row 
 				left={<CharacterDetails itemId={charId[0]}/>}
 				right={<CharacterDetails itemId={charId[1]}/>}

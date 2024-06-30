@@ -6,7 +6,7 @@ import { CharacterPage, LocationsPage, EpisodesPage} from '../pages';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Header from '../header';
 import RandomCharacter from '../random-character';
-import CarouselImages from '../carouselImages';
+import CarouselImages from '../carousel-images';
 import './app.css';
 
 export default class App extends Component {
@@ -23,7 +23,7 @@ export default class App extends Component {
   render(){
 
     let NoMatch = () => {
-      let location = useLocation();
+      const location = useLocation();
     
       return (
         <div>
@@ -40,7 +40,6 @@ export default class App extends Component {
             <div className='stardb-app'>
               <Header/>
                 <Routes>
-                    {/* <Route path='/' element={<h2>Welcome to Rick and Morty DB</h2>}/> */}
                     <Route path='/' element={<RandomCharacter/>}/>
                     <Route path='/character/:id?' element={<CharacterPage/>}/>
                     <Route path='/location/:id?' element={<LocationsPage/>}/>

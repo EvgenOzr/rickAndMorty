@@ -5,7 +5,7 @@ import Row from "../row";
 import Spinner from '../spinner'
 import ErrorIndicator from '../error-indicator/error-indicator';
 import RiMService from '../../services/rickAndMorty-service';
-import './carouselImages.css';
+import './carousel-images.css';
 
 const CarouselImages = () => {
 
